@@ -1,5 +1,15 @@
 # Kommentar 
 
+# Tal
+2 + 4
+8 - 5
+4 * 5
+3 ** 5
+13 / 9
+
+# Prøv gerne at lave nogle flere regnestykker
+
+
 # Streng = "Streng"
 # integer(heltal) = 23
 # float(decimaltal) = 23.7
