@@ -1,4 +1,9 @@
 # Kommentar 
+
+# Streng = "Streng"
+# integer(heltal) = 23
+# float(decimaltal) = 23.7
+
 # Hello, World!
 
 print(”Hello, World!”)
@@ -20,3 +25,8 @@ fav_mad = input(”Mad: ”)
 hoejde = input(”Højde: ”)
 skole = input(”Skole: ”)
 # husk at skriv print. Fx print(fav_spil)
+
+# Bonus
+# Sæt variabler sammen med en streng. Fx:
+print("Hej " + mit_navn + ". Du går i skole på " + skole)
+# Prøv at udskift variablerne og skriv noget nyt i strengen
