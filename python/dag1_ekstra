@@ -1,0 +1,22 @@
+# Kommentar 
+# Hello, World!
+
+print(”Hello, World!”)
+
+# Variabler
+mit_navn = “ ”
+ynd_farve = “ “
+fav_spil = “ “
+fav_mad = “ “
+hoejde = “ “
+skole = “ “
+# husk at skriv print inden variablen. Fx print(fav_spil)
+
+# Prøv også med input
+mit_navn = input(”Navn: ”)
+ynd_farve = input(”Farve: ”)
+fav_spil = input(”Spil: ”)
+fav_mad = input(”Mad: ”)
+hoejde = input(”Højde: ”)
+skole = input(”Skole: ”)
+# husk at skriv print. Fx print(fav_spil)
