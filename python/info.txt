@@ -1,0 +1,7 @@
+Python: python.org
+Processing: processing.org
+Sonic Pi: sonic-pi.net
+Blender: blender.org
+
+Du kan også prøve at efterbehandle i Gimp.
+Gimp: gimp.org
