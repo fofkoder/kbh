@@ -1,0 +1,72 @@
+extends Node2D
+
+# constant vars
+const PLAYERSPEED = 200
+
+const INITBALLSPEED = 100
+
+# variables
+var screen_size
+
+var pad_size
+var ball_direction = Vector2(1.0, 0.0)
+var ball_speed = INITBALLSPEED
+
+
+func _ready():
+	set_process(true)
+	
+	screen_size = get_viewport_rect().size
+	
+	pad_size = get_node("right").get_texture().get_size()
+	
+	pass # Replace with function body.
+
+
+func _process(delta):
+	# ball position
+	var ball_pos = get_node("ball").get_position()
+	
+	# colliders
+	var left_collider = Rect2(get_node("left").get_position() - pad_size * 0.5, pad_size)
+	var right_collider = Rect2(get_node("right").get_position() - pad_size * 0.5, pad_size)
+	
+	# Variables for player pos
+	var right_player_pos = get_node("right").get_position()
+	var left_player_pos = get_node("left").get_position()
+	
+	# right conditions
+	if (right_player_pos.y > 0 and Input.is_action_pressed("ui_up")):
+		right_player_pos.y += -PLAYERSPEED * delta
+	if (right_player_pos.y < screen_size.y and Input.is_action_pressed("ui_down")):
+		right_player_pos.y += PLAYERSPEED * delta
+		
+	# left conditions
+	if (left_player_pos.y > 0 and Input.is_action_pressed("left_up")):
+		left_player_pos.y += -PLAYERSPEED * delta
+	if (left_player_pos.y < screen_size.y and Input.is_action_pressed("left_down")):
+		left_player_pos.y += PLAYERSPEED * delta
+		
+	# Ball movements
+	ball_pos += ball_direction * ball_speed * delta
+	if ((ball_pos.y < 0 and ball_direction < 0) or (ball_pos.y > screen_size.y and ball_direction.y > 0)):
+		ball_direction.y = -ball_direction.y
+	if (left_collider.has_point(ball_pos) or right_collider.has_point(ball_pos)):
+		ball_direction.x = -ball_direction.x
+		ball_direction.y = randf() * 2 - 1
+		ball_direction = ball_direction.normalized()
+		if (ball_speed < 300):
+			ball_speed *= 1.4
+			
+	if (ball_pos.x < 0):
+		ball_pos = screen_size * 0.5
+		ball_speed = INITBALLSPEED
+		ball_direction.x = -ball_direction.x
+	if (ball_pos.x > screen_size.x):
+		ball_pos = screen_size * 0.5
+		ball_speed = INITBALLSPEED
+		ball_direction.x = -ball_direction.x
+	# Update pos		
+	get_node("right").set_position(right_player_pos)
+	get_node("left").set_position(left_player_pos)
+	get_node("ball").set_position(ball_pos)
